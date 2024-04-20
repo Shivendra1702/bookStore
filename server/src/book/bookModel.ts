@@ -9,7 +9,7 @@ const bookSchema = new mongoose.Schema<Book>(
     },
     author: mongoose.Schema.Types.ObjectId,
     genre: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
     },
     coverImage: {
@@ -26,4 +26,6 @@ const bookSchema = new mongoose.Schema<Book>(
   }
 );
 
-export const BookModel = mongoose.model<Book>("Book", bookSchema);
+const BookModel = mongoose.model<Book>("Book", bookSchema);
+
+export default BookModel;
