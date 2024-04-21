@@ -93,3 +93,16 @@ export const loginUser = async (
     return next(createHttpError(500, "Internal Server Error !!"));
   }
 };
+
+export const getUsers = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const users = await User.find().select("-password");
+    return res.status(200).json(users);
+  } catch (error) {
+    return next(createHttpError(500, "Internal Server Error !!"));
+  }
+};
